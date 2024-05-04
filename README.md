@@ -1,8 +1,14 @@
 Engineering materials
 ====
+- 3d printed chasis 
+- Arduino uno 
+- 2 protoboards 
+- Motor driver L298N
+- 4 3.7v battery 
+- 2 dc motors with gears 
+- lots of cables 
 
-This repository contains engineering materials of a self-driven vehicle's model participating in the WRO Future Engineers competition in the season 2022.
-
+the world is our canvas. The future is ours.
 ## Content
 
 * `t-photos` contains 2 photos of the team (an official one and one funny photo with all team members)
@@ -15,12 +21,5 @@ This repository contains engineering materials of a self-driven vehicle's model 
 
 ## Introduction
 
-_This part must be filled by participants with the technical clarifications about the code: which modules the code consists of, how they are related to the electromechanical components of the vehicle, and what is the process to build/compile/upload the code to the vehicle’s controllers._
+V0.1: For this first prototype we designed a simple robot that simply circles the track in patter like way for 3 loops. We did not implement any sensors on the first version due to the instability that these had prior to the first competition. We used a motor drive to move the car forth, this motor is located under the chasis. We used a standard servo to steer the car with a 3d printed steering structure.
 
-## How to prepare the repo based on the template
-
-_Remove this section before the first commit to the repository_
-
-1. Clone this repo by using the `git clone` functionality.
-2. Remove `.git` directory
-3. [Initialize a new public repository on GitHub](https://github.com/new) by following instructions from "create a new repository on the command line" section (appeared after pressing "Create repository" button).
