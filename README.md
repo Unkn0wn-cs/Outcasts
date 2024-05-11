@@ -1,12 +1,13 @@
 Engineering materials
 ====
 - 3d printed chasis 
-- Arduino uno 
+- Arduino Mega 2560 
 - 2 protoboards 
 - Motor driver L298N
-- 4 3.7v battery 
+- 2 9v battery 
+- 2 Ultrasonic sensors 
 - 2 dc motors with gears 
-- lots of cables 
+- lots of cables and duck tape 
 
 the world is our canvas. The future is ours.
 ## Content
@@ -21,5 +22,7 @@ the world is our canvas. The future is ours.
 
 ## Introduction
 
-V0.1: For this first prototype we designed a simple robot that simply circles the track in patter like way for 3 loops. We did not implement any sensors on the first version due to the instability that these had prior to the first competition. We used a motor drive to move the car forth, this motor is located under the chasis. We used a standard servo to steer the car with a 3d printed steering structure.
+v0.1: For this first prototype we designed a simple robot that simply circles the track in patter like way for 3 loops. We did not implement any sensors on the first version due to the instability that these had prior to the first competition. We used a motor drive to move the car forth, this motor is located under the chasis. We used a standard servo to steer the car with a 3d printed steering structure.
 
+
+v0.2: This time arround we implemented ultrasonic sensors to ensure the robot turns the edges correctly, we used a simple condition that checks wether or not there's a wall to the side of the sensor, if the output is negative the robot will turn. The robot is too fast and the sensors have trouble recongnizing walls. 
