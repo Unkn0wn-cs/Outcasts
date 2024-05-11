@@ -48,12 +48,12 @@ void loop()
       if (pixy.ccc.blocks[i].m_signature == 1)
   {
     Serial.print("Block 1\n");
-    myservo.write(60);
+    myservo.write(120);
     delay (1000);
 
   } else if (pixy.ccc.blocks[i].m_signature == 2){
     Serial.print("Block 2\n");
-    myservo.write(120);
+    myservo.write(60);
     delay (1000);
   }
   }

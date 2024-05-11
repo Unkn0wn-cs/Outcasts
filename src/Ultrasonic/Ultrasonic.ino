@@ -22,8 +22,8 @@
 */
 
 // this constant won't change. It's the pin number of the sensor's output:
-const int trigPin = 12;
-const int echoPin = 13;
+const int trigPin = 53;
+const int echoPin = 51;
 
 void setup() {
   // initialize serial communication:
@@ -54,13 +54,19 @@ void loop() {
   inches = microsecondsToInches(duration);
   cm = microsecondsToCentimeters(duration);
 
+  if (cm > 237){
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  } else {
+      digitalWrite(LED_BUILTIN, LOW);  // turn the LED on (HIGH is the voltage level)
+}
+
   Serial.print(inches);
   Serial.print("in, ");
   Serial.print(cm);
   Serial.print("cm");
   Serial.println();
 
-  delay(100);
+  delay(1000);
 }
 
 long microsecondsToInches(long microseconds) {

@@ -15,7 +15,7 @@ void setup() {
   pinMode(10, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(6, OUTPUT);
-   myservo.attach(7);  // attaches the servo on pin 9 to the servo object
+   myservo.attach(40);  // attaches the servo on pin 9 to the servo object
 
 
   // put your setup code here, to run once:
