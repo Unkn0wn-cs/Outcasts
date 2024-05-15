@@ -33,11 +33,11 @@ void setup() {
   pinMode(4, OUTPUT);
   pinMode(5, OUTPUT);
   //
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
 
-  analogWrite(9, 100);
-  analogWrite(8, 100);
+  analogWrite(10, 100);
+  analogWrite(11, 100);
 
 }
 
@@ -125,8 +125,8 @@ void rl(int i, int d){
 }
 
 void fw(){
-  analogWrite(9, 165);
-  analogWrite(8, 165);  
+  analogWrite(10, 165);
+  analogWrite(11, 165);  
   
   myservo.write(93); 
 
@@ -138,8 +138,8 @@ void fw(){
 }
 
 void highen (){
-  analogWrite(9, 175);
-  analogWrite(8, 175);
+  analogWrite(10, 175);
+  analogWrite(11, 175);
 }
 
 long microsecondsToCentimeters(long microseconds) {

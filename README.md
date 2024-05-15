@@ -25,13 +25,13 @@ The chassis is composed of 3 pieces: the base (C:\Users\samue\OneDrive\Documents
 
 - Power and Sense Management
 
-To power Kratos we are using 2 9v batteries, one is connected directly to the motor drive and the other is connected to the maga at it's vin and GND ports. These are rechargable and can store up to 600 mAh. To sense it's eviroment we included 2 ulstrasonic sensors one at each side, these are connected to the 53, 51, 24, 22 pins of the mega and detect whether or not there's a wall to it's side, if the aswer is negative it'll turn making sure it's always on the right path. 
+To power Kratos we are using 2 9v batteries, one is connected directly to the motor drive and the other is connected to the mega at it's vin and GND ports. These are rechargable and can store up to 600 mAh. To sense it's eviroment we included 2 ulstrasonic sensors one at each side, these are connected to the 53, 51, 24, 22 pins of the mega and detect whether or not there's a wall to it's side, if the aswer is negative it'll turn making sure it's always on the right path. 
 
-Full length programs are stored here (C:\Users\samue\OneDrive\Documents\Outcasts\src\Full) other programs or tenting code is stored here (C:\Users\samue\OneDrive\Documents\Outcasts\src).
+Full length programs are stored here (C:\Users\samue\OneDrive\Documents\Outcasts\src\Full) other programs or testing code is stored here (C:\Users\samue\OneDrive\Documents\Outcasts\src).
 
 - Obstacle Management
 
-For v0.3 we used 2 ulstrasonic sensors to ensure it would follow the path of the track and avoid the walls. we will not have full obstacle evasion until the camera is installed which we plan to do before v0.4, we will implement the pixy 2.1 and have analize the blocks in front of it to avoid them acordingly (this is not finished as of 5/14/24).
+For v0.3 we used 2 ulstrasonic sensors to ensure it would follow the path of the track and avoid the walls. we will not have full obstacle evasion until the camera is installed which we plan to do before v0.4, we will implement the pixy 2.1 and have it analize the blocks in front of it to avoid them acordingly (this is not finished as of 5/14/24).
 
 ## Logs
 
