@@ -1,5 +1,6 @@
 
 #include <Servo.h>
+
 Servo myservo;
 // Ultrasomnic Trigonometry
 const int trigPin1 = 53;
@@ -11,7 +12,7 @@ const int echoPin2 = 24;
   void fw();
   void rr();
   void rl();
-
+  void highen();
 
 void setup() {
   // Pins, Ultrasonic sensors, servos
@@ -31,13 +32,20 @@ void setup() {
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
   pinMode(5, OUTPUT);
+  //
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+
+  analogWrite(9, 100);
+  analogWrite(8, 100);
+
 }
 
 void loop() {
 //Fw-----------------
   fw();
 
-  delay(500);
+  delay(1000);
   
 //Ultrasonic detection -----------------------------------------------------
     long dleft, dright, left, right;
@@ -53,7 +61,7 @@ void loop() {
   Serial.print(left);
   Serial.println(", ");
 
-  delay(1000);
+  delay(100);
 
   digitalWrite(trigPin2, LOW);
   delayMicroseconds(2);
@@ -66,50 +74,72 @@ void loop() {
   Serial.print(right);
   Serial.println();
 
-  delay(1000);
+  delay(100);
 
 //Conditionals 
-  if (left > 80 && left < 500 ){
-    rr();
-  } else if (right > 80 && right < 500){
-    rl();
+  if (left > 80 && left < 150 ){
+    rr(500, 105);
+  } else if (right > 80 && right < 150){
+    rl(500, 75);
+  } else if (left > 149 && left < 400){
+    rr(750, 120);
+  } else if (right > 149 && right < 400){
+    rl(750, 60);
+  } else   if (left > 80 && left < 150 ){
+    rr(500, 105);
+  } else if (right > 80 && right < 150){
+    rl(500, 75);
+  } else if (left > 149 && left < 400){
+    rr(750, 120);
+  } else if (right > 149 && right < 400){
+    rl(750, 60);
   } 
 
 }
 
-void rr(){
+void rr(int i, int d){
+  highen();
+
   myservo.write(120);              
-  delay(500);
+
 
   digitalWrite(2, HIGH);
   digitalWrite(3, LOW);
   digitalWrite(4, LOW);
   digitalWrite(5, HIGH);
 
-  delay (5000);
+  delay (i);
 }
 
-void rl(){
+void rl(int i, int d){
+  highen();
+
   myservo.write(60);              
-  delay(500);
 
   digitalWrite(2, LOW);
   digitalWrite(3, HIGH);
   digitalWrite(4, HIGH);
   digitalWrite(5, LOW);
 
-  delay (5000);
+  delay (i);
 }
 
-void fw(){  
+void fw(){
+  analogWrite(9, 165);
+  analogWrite(8, 165);  
   
-  myservo.write(90); 
-  delay(500);
+  myservo.write(93); 
 
   digitalWrite(2, HIGH);
   digitalWrite(3, LOW);
   digitalWrite(4, HIGH);
   digitalWrite(5, LOW);
+
+}
+
+void highen (){
+  analogWrite(9, 175);
+  analogWrite(8, 175);
 }
 
 long microsecondsToCentimeters(long microseconds) {
