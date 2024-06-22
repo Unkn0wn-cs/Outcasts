@@ -1,7 +1,13 @@
-
+//6/22/24
+// Ultrasonic sensing and Camera test
+//New motors, pins, and driving mechanism
 #include <Servo.h>
+#include <Pixy2.h>
 
+// This is the main Pixy object 
+Pixy2 pixy;
 Servo myservo;
+
 // Ultrasomnic Trigonometry
 const int trigPin1 = 10;
 const int echoPin1 = 9;
@@ -26,22 +32,23 @@ void setup() {
   //Servos -------------------------------------------------------------------
     myservo.attach(7);  // attaches the servo on pin 9 to the servo object
 
+  //PIXY
+   Serial.begin(9600);
+  Serial.print("Starting...\n");
+  
+  pixy.init();
 
   //Pins -----------------------------------------------------------------------
-  pinMode(53, OUTPUT);
-  pinMode(51, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
   //
-  pinMode(49, OUTPUT);
+  pinMode(2, OUTPUT);
 }
 
 void loop() {
 //Fw-----------------
   fw();
-
-  delay(3500);
-  digitalWrite(51, LOW);
-  digitalWrite(53, LOW);
-  delay(2000);
+  delay(1250);
 //Ultrasonic detection -----------------------------------------------------
     long dleft, dright, left, right;
 
@@ -71,7 +78,7 @@ void loop() {
 
   delay(100);
 
-//Conditionals 
+//Conditionals --------------------------------------------------------------------------------------------------------------------------------------
   if  (left > 149 && left < 400){
     rr(2500, 120);
   } else if (right > 149 && right < 400){
@@ -80,44 +87,63 @@ void loop() {
     rr(2500, 120);
   } else if (right > 149 && right < 400){
     rl(2500, 60);
-  } 
+  }else {
+        
+  //Camara ------------------------------------------------------------------------------------------------------------------------------------------
+        int i; 
+  // grab blocks!
+  pixy.ccc.getBlocks();
+  
+  // If there are detect blocks, print them!
+  if (pixy.ccc.numBlocks){
+      if (pixy.ccc.blocks[i].m_signature == 1)
+  {
+    Serial.print("Block 1\n");
+    myservo.write(45);
+    delay (1000);
+    myservo.write(135);
+    delay (700);
+    myservo.write(90);
+    
+
+  } else if (pixy.ccc.blocks[i].m_signature == 2){
+    Serial.print("Block 2\n");
+    myservo.write(135);
+    delay (1000);
+    myservo.write(45);
+    delay (700);
+    myservo.write(90);
+  }
+  }
+  }
 
 }
 
 void rr(int t, int d){
-  // highen();
-
-  // myservo.write(135);              
 
 
-  // digitalWrite(2, HIGH);
-  // digitalWrite(3, LOW);
-  // digitalWrite(4, LOW);
-  // digitalWrite(5, HIGH);
+  myservo.write(135);              
 
-  // delay (t);
+
+  delay (t);
 }
 
 void rl(int t, int d){
-  // highen();
 
-  // myservo.write(45);              
 
-  // digitalWrite(2, LOW);
-  // digitalWrite(3, HIGH);
-  // digitalWrite(4, HIGH);
-  // digitalWrite(5, LOW);
+  myservo.write(45);              
 
-  // delay (t);
+
+  delay (t);
 }
 
 void fw(){
-  analogWrite(49, 90);
+  analogWrite(2, 135);
   
   myservo.write(90); 
 
-  digitalWrite(53, HIGH);
-  digitalWrite(51, LOW);
+  digitalWrite(4, HIGH);
+  digitalWrite(3, LOW);
 
 
 }

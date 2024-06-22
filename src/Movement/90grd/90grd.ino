@@ -18,7 +18,7 @@ void setup() {
   myservo.attach(40);  // attaches the servo on pin 9 to the servo object
 }
 
-void loop() {
-myservo.write(93);                  // waits 15 ms for the servo to reach the position
+void loop() { 
+myservo.write(90);                  // waits 15 ms for the servo to reach the position
   
 }

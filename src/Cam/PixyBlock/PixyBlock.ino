@@ -32,7 +32,7 @@ void setup()
 {
   Serial.begin(115200);
   Serial.print("Starting...\n");
-  myservo.attach(7);
+  myservo.attach(40);
   
   pixy.init();
 }
@@ -48,12 +48,12 @@ void loop()
       if (pixy.ccc.blocks[i].m_signature == 1)
   {
     Serial.print("Block 1\n");
-    myservo.write(120);
+    myservo.write(135);
     delay (1000);
 
   } else if (pixy.ccc.blocks[i].m_signature == 2){
     Serial.print("Block 2\n");
-    myservo.write(60);
+    myservo.write(45);
     delay (1000);
   }
   }

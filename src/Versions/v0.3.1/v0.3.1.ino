@@ -1,12 +1,11 @@
-
 #include <Servo.h>
 
 Servo myservo;
 // Ultrasomnic Trigonometry
-const int trigPin1 = 10;
-const int echoPin1 = 9;
-const int trigPin2 = 13;
-const int echoPin2 = 12;
+const int trigPin1 = 53;
+const int echoPin1 = 51;
+const int trigPin2 = 22;
+const int echoPin2 = 24;
 
 //Funtions ------------------------------------------------------------------
   void fw();
@@ -24,24 +23,29 @@ void setup() {
     pinMode(echoPin2,INPUT);
 
   //Servos -------------------------------------------------------------------
-    myservo.attach(7);  // attaches the servo on pin 9 to the servo object
+    myservo.attach(40);  // attaches the servo on pin 9 to the servo object
 
 
   //Pins -----------------------------------------------------------------------
-  pinMode(53, OUTPUT);
-  pinMode(51, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
   //
-  pinMode(49, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+
+  analogWrite(10, 100);
+  analogWrite(11, 100);
+
 }
 
 void loop() {
 //Fw-----------------
   fw();
 
-  delay(3500);
-  digitalWrite(51, LOW);
-  digitalWrite(53, LOW);
-  delay(2000);
+  delay(1000);
+  
 //Ultrasonic detection -----------------------------------------------------
     long dleft, dright, left, right;
 
@@ -72,60 +76,69 @@ void loop() {
   delay(100);
 
 //Conditionals 
-  if  (left > 149 && left < 400){
-    rr(2500, 120);
+  if (left > 80 && left < 150 ){
+    rr(500, 105);
+  } else if (right > 80 && right < 150){
+    rl(500, 75);
+  } else if (left > 149 && left < 400){
+    rr(750, 120);
   } else if (right > 149 && right < 400){
-    rl(2500, 60);
-  } else   if (left > 149 && left < 400){
-    rr(2500, 120);
+    rl(750, 60);
+  } else   if (left > 80 && left < 150 ){
+    rr(500, 105);
+  } else if (right > 80 && right < 150){
+    rl(500, 75);
+  } else if (left > 149 && left < 400){
+    rr(750, 120);
   } else if (right > 149 && right < 400){
-    rl(2500, 60);
+    rl(750, 60);
   } 
 
 }
 
-void rr(int t, int d){
-  // highen();
+void rr(int i, int d){
+  highen();
 
-  // myservo.write(135);              
+  myservo.write(120);              
 
 
-  // digitalWrite(2, HIGH);
-  // digitalWrite(3, LOW);
-  // digitalWrite(4, LOW);
-  // digitalWrite(5, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(5, HIGH);
 
-  // delay (t);
+  delay (i);
 }
 
-void rl(int t, int d){
-  // highen();
+void rl(int i, int d){
+  highen();
 
-  // myservo.write(45);              
+  myservo.write(60);              
 
-  // digitalWrite(2, LOW);
-  // digitalWrite(3, HIGH);
-  // digitalWrite(4, HIGH);
-  // digitalWrite(5, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, LOW);
 
-  // delay (t);
+  delay (i);
 }
 
 void fw(){
-  analogWrite(49, 90);
+  analogWrite(10, 165);
+  analogWrite(11, 165);  
   
-  myservo.write(90); 
+  myservo.write(93); 
 
-  digitalWrite(53, HIGH);
-  digitalWrite(51, LOW);
-
+  digitalWrite(2, HIGH);
+  digitalWrite(3, LOW);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, LOW);
 
 }
 
 void highen (){
-  int i = 250;
-  analogWrite(10, 255);
-  analogWrite(11, 90);
+  analogWrite(10, 175);
+  analogWrite(11, 175);
 }
 
 long microsecondsToCentimeters(long microseconds) {
