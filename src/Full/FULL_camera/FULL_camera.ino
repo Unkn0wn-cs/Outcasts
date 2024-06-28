@@ -1,6 +1,5 @@
-//6/22/24
-// Ultrasonic sensing and Camera test
-//New motors, pins, and driving mechanism
+//6/26/24
+//Arround the 
 #include <Servo.h>
 #include <Pixy2.h>
 
@@ -18,7 +17,7 @@ const int echoPin2 = 12;
   void fw();
   void rr();
   void rl();
-  void highen();
+  //void highen();
 
 void setup() {
   // Pins, Ultrasonic sensors, servos
@@ -30,7 +29,7 @@ void setup() {
     pinMode(echoPin2,INPUT);
 
   //Servos -------------------------------------------------------------------
-    myservo.attach(7);  // attaches the servo on pin 9 to the servo object
+    myservo.attach(7);  // attaches the servo on pin 7 to the servo object
 
   //PIXY
    Serial.begin(9600);
@@ -39,7 +38,7 @@ void setup() {
   pixy.init();
 
   //Pins -----------------------------------------------------------------------
-  pinMode(2, OUTPUT);
+  pinMode(4, OUTPUT);
   pinMode(3, OUTPUT);
   //
   pinMode(2, OUTPUT);
@@ -62,7 +61,7 @@ void loop() {
   Serial.print(left);
   Serial.println(", ");
 
-  delay(100);
+  //delay(100);
 
   digitalWrite(trigPin2, LOW);
   delayMicroseconds(2);
@@ -121,6 +120,8 @@ void loop() {
   }
 
 }
+
+
 
 void rr(int t, int d){
   myservo.write(135);              
