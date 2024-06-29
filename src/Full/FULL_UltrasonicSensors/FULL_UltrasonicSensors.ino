@@ -1,3 +1,5 @@
+#include <QuadratureEncoder.h>
+
 
 #include <Servo.h>
 

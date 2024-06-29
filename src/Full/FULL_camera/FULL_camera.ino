@@ -124,15 +124,15 @@ void loop() {
 
 
 void rr(int t, int d){
-  myservo.write(135);              
+  myservo.write(145);              
 }
 
 void rl(int t, int d){
-  myservo.write(45);              
+  myservo.write(35);              
 }
 
 void fw(){
-  analogWrite(2, 220);
+  analogWrite(2, 255);
   
   myservo.write(90); 
 
